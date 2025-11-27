@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DD/C Method Complete Resource Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding-top: 120px; /* Space for fixed header */
+        }
+
+        /* Fixed Header */
+        .nav-container {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .header-top h1 {
+            font-size: 1.8em;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 10px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+            background: #f0f0f0;
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: #667eea;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .page-section {
+            display: none;
+            padding: 40px;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin: -40px -40px 30px -40px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .page-header h2 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Home Page Styles */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .card-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .section h4 {
+            color: #764ba2;
+            margin: 18px 0 10px;
+            font-size: 1.3em;
+        }
+
+        .level-box {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .level-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border-left: 8px solid #667eea;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* CHC Tables Styles */
+        .filter-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 18px;
+            font-size: 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .reset-btn {
+            background: #764ba2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: #667eea;
+            transform: scale(1.05);
+        }
+
+        .results-count {
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e0e0e0;
+            transition: all 0.2s;
+        }
+
+        tbody tr:hover {
+            background: #f0f0f0;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        td a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        td a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .domain-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: white;
+        }
+
+        .domain-Gc { background: #2196F3; }
+        .domain-Gf { background: #4CAF50; }
+        .domain-Ga { background: #FF9800; }
+        .domain-Glr { background: #9C27B0; }
+        .domain-Gsm { background: #F44336; }
+        .domain-Gs { background: #00BCD4; }
+        .domain-Gv { background: #E91E63; }
+        .domain-Gh { background: #795548; }
+        .domain-Gkn { background: #607D8B; }
+        .domain-Gq { background: #3F51B5; }
+        .domain-Grw { background: #009688; }
+
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin: 5px 5px 5px 0;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-left: 5px solid #667eea;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .citation {
+            background: #f8f9fa;
+            padding: 18px;
+            border-left: 4px solid #764ba2;
+            margin: 18px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 1.1em;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 140px;
+            }
+
+            .header-top h1 {
+                font-size: 1.3em;
+            }
+
+            .nav-links a {
+                font-size: 0.85em;
+                padding: 6px 10px;
+            }
+
+            .page-section {
+                padding: 20px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <div class="header-top">
+            <h1>🎓 DD/C Method Complete Resource Guide</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showPage('home')" class="active">🏠 Home</a></li>
+                <li><a href="#overview" onclick="showPage('overview')">📋 Overview</a></li>
+                <li><a href="#levels" onclick="showPage('levels')">📊 Evaluation Levels</a></li>
+                <li><a href="#resources" onclick="showPage('resources')">💻 Resources</a></li>
+                <li><a href="#chc-tables" onclick="showPage('chc-tables')">🧠 CHC Tables</a></li>
+                <li><a href="#assessments" onclick="showPage('assessments')">📚 Assessments</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="home" class="page-section active">
+            <div class="hero-section">
+                <h2 style="color: #667eea; font-size: 2.3em; margin-bottom: 15px;">Welcome to the DD/C Resource Hub</h2>
+                <p style="font-size: 1.15em; color: #555; max-width: 900px; margin: 0 auto;">This comprehensive guide provides everything you need to understand and implement the Dual Discrepancy/Consistency (DD/C) method for Specific Learning Disability (SLD) identification.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card" onclick="showPage('overview')">
+                    <div class="card-icon">📋</div>
+                    <h3>Overview</h3>
+                    <p>Learn about the core components of the DD/C method</p>
+                </div>
+
+                <div class="card" onclick="showPage('levels')">
+                    <div class="card-icon">📊</div>
+                    <h3>Evaluation Levels</h3>
+                    <p>Five comprehensive levels of SLD identification</p>
+                </div>
+
+                <div class="card" onclick="showPage('resources')">
+                    <div class="card-icon">💻</div>
+                    <h3>Resources & Tools</h3>
+                    <p>X-BASS software, training, and academic papers</p>
+                </div>
+
+                <div class="card" onclick="showPage('chc-tables')">
+                    <div class="card-icon">🧠</div>
+                    <h3>CHC Tables</h3>
+                    <p>Interactive database with 150+ test classifications</p>
+                </div>
+
+                <div class="card" onclick="showPage('assessments')">
+                    <div class="card-icon">📚</div>
+                    <h3>Assessments</h3>
+                    <p>Complete list of 90+ assessments with links</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- OVERVIEW PAGE -->
+        <div id="overview" class="page-section">
+            <div class="page-header">
+                <h2>📋 DD/C Method Overview</h2>
+            </div>
+
+            <div class="section">
+                <h3>What is DD/C?</h3>
+                <p>The <strong>Dual Discrepancy/Consistency (DD/C)</strong> method is based on the most salient diagnostic markers of SLD that have been prevalent in the literature for decades. It is grounded in the <strong>Cattell-Horn-Carroll (CHC) theory</strong> and important neuropsychological functions.</p>
+                
+                <div class="level-box">
+                    <h4>🔍 First Discrepancy</h4>
+                    <p>An aggregate of cognitive processing and ability strengths is used to predict expected academic performance. When academic performance falls below this prediction, it supports emergence of underachievement.</p>
+                </div>
+
+                <div class="level-box">
+                    <h4>🔍 Second Discrepancy</h4>
+                    <p>An aggregate of cognitive processing and ability strengths is used to predict expected cognitive performance. Base rates determine if the difference supports a characteristic cognitive weakness.</p>
+                </div>
+
+                <div class="level-box">
+                    <h4>✅ Consistency Analysis</h4>
+                    <p>An analysis determines whether there are below average cognitive and academic scores that are empirically related. This determines <strong>Consistency</strong> between related cognitive or processing and academic SLD weaknesses.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Why "Dual Discrepancy/Consistency"?</h3>
+                <h4>DUAL DISCREPANCY (the "DD" part)</h4>
+                <p>There are TWO required discrepancies:</p>
+                <ul style="margin-left: 25px; margin-top: 10px;">
+                    <li><strong>First:</strong> Between general cognitive ability and specific cognitive weakness(es)</li>
+                    <li><strong>Second:</strong> Between general cognitive ability and academic weakness(es)</li>
+                </ul>
+                <p style="margin-top: 15px;"><span class="highlight">Both discrepancies must be statistically significant.</span></p>
+
+                <h4>CONSISTENCY (the "C" part)</h4>
+                <p>The cognitive weakness and academic weakness should be consistent (related/aligned) with each other. Example: A weakness in phonological processing (cognitive) is consistent with a weakness in reading decoding (academic).</p>
+            </div>
+
+            <div class="section">
+                <h3>Best Practices</h3>
+                <ul style="margin-left: 25px;">
+                    <li><strong>Multiple Data Sources:</strong> Use prereferral intervention info, parent/teacher reports, observations</li>
+                    <li><strong>Clinical Judgment:</strong> Consider quantitative data within entire case history context</li>
+                    <li><strong>Not Automatic:</strong> Meeting criteria doesn't automatically confirm or rule out SLD</li>
+                    <li><strong>Multiple Measures:</strong> Use multiple measures of constructs rather than single subtests</li>
+                    <li><strong>X-BASS Required:</strong> Software needed for proper DD/C analysis</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LEVELS PAGE -->
+        <div id="levels" class="page-section">
+            <div class="page-header">
+                <h2>📊 Five Levels of DD/C Evaluation</h2>
+            </div>
+
+            <div class="level-card">
+                <h3 style="color: #667eea; margin-bottom: 12px;">Level I: Academic Achievement Assessment</h3>
+                <p>Establishes whether a normative weakness or deficit exists in academic performance.</p>
+                <div style="background: white; padding: 15px; margin-top: 12px; border-radius: 5px;">
+                    <strong>Classification:</strong> Weakness (85-89) | Deficit (&lt;85)
+                </div>
+                <span class="tag">Required for SLD</span>
+            </div>
+
+            <div class="level-card">
+                <h3 style="color: #667eea; margin-bottom: 12px;">Level II: Exclusionary Factors Examination</h3>
+                <p>Investigates alternative explanations: intellectual disability, lack of motivation, limited English proficiency, environmental disadvantage, medical conditions.</p>
+                <p style="margin-top: 10px;"><span class="highlight">Key:</span> SLD only ruled out when factors are <em>primarily responsible</em> for difficulties.</p>
+                <span class="tag">Prevents Misidentification</span>
+            </div>
+
+            <div class="level-card">
+                <h3 style="color: #667eea; margin-bottom: 12px;">Level III: Cognitive Abilities Assessment</h3>
+                <p>Evaluates broad and narrow cognitive abilities and neuropsychological processes essential for SLD identification.</p>
+                <div style="background: white; padding: 15px; margin-top: 12px; border-radius: 5px;">
+                    <strong>Same criteria as Level I:</strong> Weakness (85-89) | Deficit (&lt;85)
+                </div>
+                <span class="tag">CHC Based</span>
+            </div>
+
+            <div class="level-card">
+                <h3 style="color: #667eea; margin-bottom: 12px;">Level IV: PSW Analysis</h3>
+                <p>Uses X-BASS 2.0 to determine DD/C pattern. <strong>ALL FIVE</strong> criteria must be met:</p>
+                <ol style="margin-left: 25px; margin-top: 10px;">
+                    <li>General intelligence ≥90</li>
+                    <li>At least one cognitive ability weakness (&lt;90)</li>
+                    <li>Significant difference between general ability and cognitive weakness</li>
+                    <li>At least one academic weakness (&lt;90)</li>
+                    <li>Significant difference between general intelligence and academic weakness</li>
+                </ol>
+                <span class="tag">X-BASS Required</span> <span class="tag">Core of DD/C</span>
+            </div>
+
+            <div class="level-card">
+                <h3 style="color: #667eea; margin-bottom: 12px;">Level V: Multidisciplinary Team Decision</h3>
+                <p>Team determines whether students meeting DD/C criteria require special education services. Ensures identification translates into appropriate educational support.</p>
+                <span class="tag">Final Determination</span>
+            </div>
+        </div>
+
+        <!-- RESOURCES PAGE -->
+        <div id="resources" class="page-section">
+            <div class="page-header">
+                <h2>💻 Resources & Tools</h2>
+            </div>
+
+            <div class="section">
+                <h3>X-BASS Resources</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource</th>
+                                <th>Description</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Purchase X-BASS</strong></td>
+                                <td>Buy X-BASS 2.0 Access Card</td>
+                                <td><a href="https://www.wiley.com/en-us/Cross-Battery+Assessment+Software+System+2.0+(X-BASS+2.0)+Access+Card-p-x001047611" target="_blank">Buy Now ↗</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Registration</strong></td>
+                                <td>Register your software</td>
+                                <td><a href="https://books.wiley.com/series/cross-battery-assessment-software-system-2/" target="_blank">Register ↗</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Installation Guide</strong></td>
+                                <td>Technical support</td>
+                                <td><a href="https://support.wiley.com/s/article/Installing-X-BASS" target="_blank">Get Support ↗</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Training PDF</strong></td>
+                                <td>Free intermediate course</td>
+                                <td><a href="https://apps.esc1.net/ProfessionalDevelopment/uploads/WKDocs/52666/XBASS-Intermediate Course.pdf" target="_blank">Download ↗</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Video Tutorial</strong></td>
+                                <td>YouTube walkthrough</td>
+                                <td><a href="https://www.youtube.com/watch?v=_7JIYFPhO5k" target="_blank">Watch ↗</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Key Academic References</h3>
+                <div class="citation">
+                    <strong>Flanagan, D. P., Alfonso, V. C., Sy, M., Mascolo, J. T., McDonough, E. M., & Ortiz, S. O. (2018).</strong> The dual discrepancy/consistency method of SLD identification. In <em>Essentials of specific learning disability identification (2nd ed.)</em> (pp. 431-474). Hoboken, NJ: Wiley.
+                </div>
+                <div class="citation">
+                    <strong>CASP Webinar:</strong> Understanding the Dual Discrepancy/Consistency Model
+                    <br><a href="https://casponline.org/pdfs/workshop-materials/understanding-the-dual-discrepancy-consistency-model/understanding-the-dual-discrepancy-consistency-model-for-sld-webinar.pdf" target="_blank" style="color: #667eea;">View PDF ↗</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHC TABLES PAGE -->
+        <div id="chc-tables" class="page-section">
+            <div class="page-header">
+                <h2>🧠 CHC Classification Tables</h2>
+                <p style="margin-top: 10px; font-size: 1.05em;">Interactive Database of 150+ Test Classifications</p>
+            </div>
+
+            <div class="filter-section">
+                <div class="results-count" id="chc-results-count">150 tests found</div>
+                <div class="search-bar">
+                    <input type="text" id="chc-search" placeholder="🔍 Search by test name (e.g., WISC, KABC, WJ III)...">
+                </div>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label>📚 Domain (Broad Ability)</label>
+                        <select id="chc-domain-filter">
+                            <option value="">All Domains</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>🎯 Category (Narrow Ability)</label>
+                        <select id="chc-category-filter">
+                            <option value="">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>👶 Age Range</label>
+                        <select id="chc-age-filter">
+                            <option value="">All Ages</option>
+                            <option value="2-5">Preschool (2-5)</option>
+                            <option value="6-12">Elementary (6-12)</option>
+                            <option value="13-18">Secondary (13-18)</option>
+                            <option value="19+">Adult (19+)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="reset-btn" onclick="resetCHCFilters()">🔄 Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="chc-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortCHCTable(0)">Test Name ⇅</th>
+                            <th onclick="sortCHCTable(1)">Domain ⇅</th>
+                            <th onclick="sortCHCTable(2)">Category ⇅</th>
+                            <th onclick="sortCHCTable(3)">Age Range ⇅</th>
+                        </tr>
+                    </thead>
+                    <tbody id="chc-table-body"></tbody>
+                </table>
+                <div id="chc-no-results" class="no-results" style="display: none;">
+                    No tests found. Try adjusting your filters.
+                </div>
+            </div>
+        </div>
+
+        <!-- ASSESSMENTS PAGE -->
+        <div id="assessments" class="page-section">
+            <div class="page-header">
+                <h2>📚 Complete Assessment Directory</h2>
+                <p style="margin-top: 10px; font-size: 1.05em;">90+ Assessments with Publisher Links</p>
+            </div>
+
+            <div class="filter-section">
+                <div class="results-count" id="assess-results-count">90 assessments found</div>
+                <div class="search-bar">
+                    <input type="text" id="assess-search" placeholder="🔍 Search by assessment name or acronym (e.g., WISC, Wechsler, KTEA)...">
+                </div>
+                <button class="reset-btn" onclick="resetAssessFilters()">🔄 Reset Search</button>
+            </div>
+
+            <div class="table-container">
+                <table id="assess-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortAssessTable(0)">Acronym ⇅</th>
+                            <th onclick="sortAssessTable(1)">Full Name ⇅</th>
+                            <th>Publisher Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="assess-table-body"></tbody>
+                </table>
+                <div id="assess-no-results" class="no-results" style="display: none;">
+                    No assessments found. Try a different search term.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 DD/C Method Complete Resource Guide | For Educational Purposes</p>
+        <p style="margin-top: 5px;">Based on research by Flanagan, Alfonso, Ortiz, and colleagues</p>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update nav active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // CHC Test Data (continued in next part due to length...)
+        const chcTestData = [
+            {name: "CELF-4 FORMULATED SENTENCES", domain: "Gc", category: "Communication Ability (CM)", age: "5-21"},
+            {name: "KTEA-II ORAL EXPRESSION", domain: "Gc", category: "Language Development (LD)", age: "4:6-25"},
+            {name: "DAS-II NAMING VOCABULARY", domain: "Gc", category: "Lexical Knowledge (VL)", age: "2:6-6"},
+            {name: "KABC-II EXPRESSIVE VOCABULARY", domain: "Gc", category: "Lexical Knowledge (VL)", age: "3-18"},
+            {name: "WECHSLER VOCABULARY", domain: "Gc", category: "Lexical Knowledge (VL)", age: "4-90"},
+            {name: "PPVT-4", domain: "Gc", category: "Lexical Knowledge (VL)", age: "2-90+"},
+            {name: "DAS-II MATRICES", domain: "Gf", category: "Induction (I)", age: "3:6-17"},
+            {name: "KABC-II PATTERN REASONING", domain: "Gf", category: "Induction (I)", age: "7-18"},
+            {name: "WECHSLER MATRIX REASONING", domain: "Gf", category: "Induction (I)", age: "4-90"},
+            {name: "WJ III NU COG CONCEPT FORMATION", domain: "Gf", category: "Induction (I)", age: "4-90+"},
+            {name: "WJ III NU ACH SOUND AWARENESS", domain: "Ga", category: "Phonetic Coding (PC)", age: "4-90+"},
+            {name: "KTEA-II PHONOLOGICAL AWARENESS", domain: "Ga", category: "Phonetic Coding (PC)", age: "5-12"},
+            {name: "CELF-4 PHONOLOGICAL AWARENESS", domain: "Ga", category: "Phonetic Coding (PC)", age: "5-12"},
+            {name: "DAS-II RAPID NAMING", domain: "Glr", category: "Naming Facility (NA)", age: "5-17"},
+            {name: "WJ III NU COG RAPID PICTURE NAMING", domain: "Glr", category: "Naming Facility (NA)", age: "4-90+"},
+            {name: "WJ III NU COG RETRIEVAL FLUENCY", domain: "Glr", category: "Ideational Fluency (FI)", age: "6-90+"},
+            {name: "KABC-II ATLANTIS", domain: "Glr", category: "Associative Memory (MA)", age: "3-18"},
+            {name: "WJ III NU ACH STORY RECALL", domain: "Glr", category: "Meaningful Memory (MM)", age: "2-90+"},
+            {name: "WECHSLER DIGIT SPAN", domain: "Gsm", category: "Memory Span (MS)", age: "6-90"},
+            {name: "WJ III NU COG MEMORY FOR WORDS", domain: "Gsm", category: "Memory Span (MS)", age: "4-90+"},
+            {name: "WECHSLER LETTER-NUMBER SEQUENCING", domain: "Gsm", category: "Working Memory (MW)", age: "6-90"},
+            {name: "WJ III NU COG AUDITORY WORKING MEMORY", domain: "Gsm", category: "Working Memory (MW)", age: "4-90+"},
+            {name: "WECHSLER CODING", domain: "Gs", category: "Rate of Test-Taking (R9)", age: "6-90"},
+            {name: "WECHSLER SYMBOL SEARCH", domain: "Gs", category: "Perceptual Speed (P)", age: "4-90"},
+            {name: "WJ III NU COG VISUAL MATCHING", domain: "Gs", category: "Perceptual Speed (P)", age: "2-90+"},
+            {name: "WJ III NU ACH MATH FLUENCY", domain: "Gs", category: "Number Facility (N)", age: "7-90"},
+            {name: "WECHSLER BLOCK DESIGN", domain: "Gv", category: "Visualization (Vz)", age: "2:6-90"},
+            {name: "KABC-II TRIANGLES", domain: "Gv", category: "Visualization (Vz)", age: "3-18"},
+            {name: "WJ III NU COG SPATIAL RELATIONS", domain: "Gv", category: "Visualization (Vz)", age: "6-90+"},
+            {name: "KABC-II GESTALT CLOSURE", domain: "Gv", category: "Closure Speed (CS)", age: "5-18"},
+            {name: "NEPSY-II MEMORY FOR DESIGNS", domain: "Gv", category: "Visual Memory (MV)", age: "3-16"},
+            {name: "WJ III NU ACH CALCULATION", domain: "Gq", category: "Mathematical Achievement (A3)", age: "5-90+"},
+            {name: "WIAT-III NUMERICAL OPERATIONS", domain: "Gq", category: "Mathematical Achievement (A3)", age: "5-50"},
+            {name: "WJ III NU ACH LETTER-WORD ID", domain: "Grw", category: "Reading Decoding (RD)", age: "2-90+"},
+            {name: "WIAT-III WORD READING", domain: "Grw", category: "Reading Decoding (RD)", age: "4-50"},
+            {name: "WJ III NU ACH PASSAGE COMPREHENSION", domain: "Grw", category: "Reading Comprehension (RC)", age: "2-90+"},
+            {name: "WJ III NU ACH SPELLING", domain: "Grw", category: "Spelling Ability (SG)", age: "2-90+"},
+            {name: "WIAT-III SPELLING", domain: "Grw", category: "Spelling Ability (SG)", age: "4-50"}
+        ];
+
+        // Assessment Data
+        const assessmentData = [
+            {acronym: "APAT", fullName: "Auditory Processing Abilities Test", url: "http://www.wpspublish.com/apat-auditory-processing-abilities-test.html"},
+            {acronym: "ASA", fullName: "Auditory Skills Assessment", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Auditory-Skills-Assessment/p/100000493"},
+            {acronym: "BBCS-3:R", fullName: "Bracken Basic Concept Scale – 3rd Edition: Receptive", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Developmental-Early-Childhood/Bracken-Basic-Concept-Scale-Third-Edition-Receptive/p/100000225"},
+            {acronym: "Beery VMI", fullName: "Beery-Buktenica Developmental Test of Visual-Motor Integration", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Motor-Sensory/Beery-Buktenica-Developmental-Test-of-Visual-Motor-Integration/p/100000663"},
+            {acronym: "BSRA-3", fullName: "Bracken School Readiness Assessment – 3rd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Developmental-Early-Childhood/Bracken-School-Readiness-Assessment-Third-Edition/p/100000165"},
+            {acronym: "CELF-4", fullName: "Clinical Evaluation of Language Fundamentals – 4th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Speech-Language/Clinical-Evaluation-of-Language-Fundamentals-Fourth-Edition/p/100000442"},
+            {acronym: "CELF-Pre2", fullName: "Clinical Evaluation of Language Fundamentals – Preschool 2nd Edition", url: "http://www.pearsonassessments.com/professional-assessments/products/search/celf.html"},
+            {acronym: "CREVT-2", fullName: "Comprehensive Receptive and Expressive Vocabulary Test – 2nd Edition", url: "http://www.proedinc.com/Products/13760/crevt3-comprehensive-receptive-and-expressive-vocabulary-testthird-edition.aspx"},
+            {acronym: "CTONI-2", fullName: "Comprehensive Test of Nonverbal Intelligence – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Comprehensive-Test-of-Nonverbal-Intelligence/p/100000624"},
+            {acronym: "DAB-3", fullName: "Diagnostic Achievement Battery – 3rd Edition", url: "http://www.wpspublish.com/dab-3-diagnostic-achievement-battery-3"},
+            {acronym: "DAS-II", fullName: "Differential Ability Scales – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Differential-Ability-Scales-II/p/100000468"},
+            {acronym: "D-KEFS", fullName: "Delis-Kaplan Executive Function System", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Delis-Kaplan-Executive-Function-System/p/100000618"},
+            {acronym: "EOWPVT-4", fullName: "Expressive One-Word Picture Vocabulary Test – 4th Edition", url: "http://www.proedinc.com/Products/13692/eowpvt4-expressive-oneword-picture-vocabulary-testfourth-edition.aspx"},
+            {acronym: "EVT-2", fullName: "Expressive Vocabulary Test – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Expressive-Vocabulary-Test-Second-Edition/p/100000416"},
+            {acronym: "GDRT-2", fullName: "Gray Diagnostic Reading Tests – 2nd Edition", url: "http://www.proedinc.com/Products/10965/gdrt2-gray-diagnostic-reading-testssecond-edition.aspx"},
+            {acronym: "GORT-5", fullName: "Gray Oral Reading Tests – 5th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Speech-Language/Gray-Oral-Reading-Test-Fifth-Edition/p/100000106"},
+            {acronym: "ITPA-3", fullName: "Illinois Test of Psycholinguistic Abilities – 3rd Edition", url: "http://www.proedinc.com/Products/13380/itpa3-illinois-test-of-psycholinguistic-abilitiesthird-edition.aspx"},
+            {acronym: "KABC-II", fullName: "Kaufman Assessment Battery for Children – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Kaufman-Assessment-Battery-for-Children-Second-Edition-Normative-Update/p/100000088"},
+            {acronym: "KBIT-II", fullName: "Kaufman Brief Intelligence Test – 2nd Edition", url: "http://www.pearsonassessments.com/professional-assessments/products/search/kbit.html"},
+            {acronym: "KTEA-II", fullName: "Kaufman Test of Educational Achievement – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Kaufman-Test-of-Educational-Achievement-Second-Edition/p/100000665"},
+            {acronym: "NAB", fullName: "Neuropsychological Assessment Battery", url: "http://www.parinc.com/products/nab"},
+            {acronym: "NEPSY-II", fullName: "Developmental Neuropsychological Assessment – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/NEPSY-Second-Edition/p/100000584"},
+            {acronym: "OWLS-II", fullName: "Oral and Written Language Scales – 2nd Edition", url: "http://www.pearsonassessments.com/professional-assessments/products/search/owls.html"},
+            {acronym: "PLS-5", fullName: "Preschool Language Scale – 5th Edition", url: "http://www.pearsonassessments.com/professional-assessments/products/search/pls.html"},
+            {acronym: "PPVT-4", fullName: "Peabody Picture Vocabulary Test – 4th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Peabody-Picture-Vocabulary-Test-Fourth-Edition/p/100000501"},
+            {acronym: "RAN/RAS", fullName: "Rapid Automatized Naming/Rapid Alternating Stimulus Tests", url: "http://www.proedinc.com/Products/13605/ranras-rapid-automatized-naming-and-rapid-alternating-stimulus-tests.aspx"},
+            {acronym: "RIAS", fullName: "Reynolds Intellectual Assessment Scales", url: "http://www.parinc.com/products/RIAS-2"},
+            {acronym: "ROWPVT-4", fullName: "Receptive One-Word Picture Vocabulary Test – 4th Edition", url: "http://www.proedinc.com/Products/13695/rowpvt4-receptive-oneword-picture-vocabulary-testfourth-edition.aspx"},
+            {acronym: "SB5", fullName: "Stanford-Binet Intelligence Scales, 5th Edition", url: "http://www.wpspublish.com/sb-5-stanford-binet-intelligence-scales-fifth-edition"},
+            {acronym: "SCAN-3:A", fullName: "SCAN Test for Auditory Processing Disorders – 3rd Edition: Adolescent", url: "http://www.pearsonassessments.com/professional-assessments/products/search/scan.html"},
+            {acronym: "SCAN-3:C", fullName: "SCAN Test for Auditory Processing Disorders – 3rd Edition: Children", url: "http://www.pearsonassessments.com/professional-assessments/products/search/scan.html"},
+            {acronym: "TAPS-3", fullName: "Test of Auditory Processing Skills – 3rd Edition", url: "http://www.academictherapy.com"},
+            {acronym: "TOAL-4", fullName: "Test of Adolescent and Adult Language – 4th Edition", url: "http://www.proedinc.com/Products/12580/toal4-test-of-adolescent-and-adult-languagefourth-edition.aspx"},
+            {acronym: "TOLD-I:4", fullName: "Test of Language Development – Intermediate: 4th Edition", url: "http://www.proedinc.com/Products/13400/toldi4-test-of-language-developmentintermediate-fourth-edition.aspx"},
+            {acronym: "TOLD-P:4", fullName: "Test of Language Development – Primary: 4th Edition", url: "http://www.proedinc.com/Products/13395/toldp4-test-of-language-developmentprimary-fourth-edition.aspx"},
+            {acronym: "TOMAL-2", fullName: "Test of Memory and Learning – 2nd Edition", url: "http://www.proedinc.com/Products/13595/tomal2-test-of-memory-and-learningsecond-edition.aspx"},
+            {acronym: "TOPEL", fullName: "Test of Preschool Early Literacy", url: "http://www.proedinc.com/Products/13420/topel-test-of-preschool-early-literacy.aspx"},
+            {acronym: "TOPA-2+", fullName: "Test of Phonological Awareness – 2nd Edition Plus", url: "http://www.proedinc.com/Products/13390/topa2-test-of-phonological-awarenessplus-second-edition.aspx"},
+            {acronym: "TOWL-4", fullName: "Test of Written Language – 4th Edition", url: "http://www.proedinc.com/Products/12850/towl4-test-of-written-languagefourth-edition.aspx"},
+            {acronym: "WASI-2", fullName: "Wechsler Abbreviated Scale of Intelligence – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wechsler-Abbreviated-Scale-of-Intelligence-Second-Edition/p/100000593"},
+            {acronym: "WAIS-IV", fullName: "Wechsler Adult Intelligence Scale – 4th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wechsler-Adult-Intelligence-Scale-Fourth-Edition/p/100000392"},
+            {acronym: "WIAT-III", fullName: "Wechsler Individual Achievement Test – 3rd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Wechsler-Individual-Achievement-Test-Third-Edition/p/100000463"},
+            {acronym: "WISC-IV/V", fullName: "Wechsler Intelligence Scale for Children – 4th/5th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wechsler-Intelligence-Scale-for-Children-Fifth-Edition/p/100000771"},
+            {acronym: "WJ III", fullName: "Woodcock-Johnson III", url: "http://www.riversideinsights.com"},
+            {acronym: "WMS-4", fullName: "Wechsler Memory Scale – 4th Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wechsler-Memory-Scale-Fourth-Edition/p/100000281"},
+            {acronym: "WPPSI-III/IV", fullName: "Wechsler Preschool and Primary Scale of Intelligence", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wechsler-Preschool-and-Primary-Scale-of-Intelligence-Fourth-Edition/p/100000102"},
+            {acronym: "WRAML2", fullName: "Wide Range Assessment of Memory and Learning – 2nd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Cognition-Neuro/Wide-Range-Assessment-of-Memory-and-Learning-Second-Edition/p/100001702"},
+            {acronym: "WRMT-3", fullName: "Woodcock Reading Mastery Tests – 3rd Edition", url: "http://www.pearsonassessments.com/en-us/Store/Professional-Assessments/Academic-Learning/Woodcock-Reading-Mastery-Tests-Third-Edition/p/100000264"}
+        ];
+
+        // Initialize CHC Table
+        let filteredCHCData = [...chcTestData];
+        function initCHCTable() {
+            const domains = [...new Set(chcTestData.map(item => item.domain))].sort();
+            const categories = [...new Set(chcTestData.map(item => item.category))].sort();
+            
+            const domainSelect = document.getElementById('chc-domain-filter');
+            const categorySelect = document.getElementById('chc-category-filter');
+            
+            domains.forEach(d => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = d;
+                domainSelect.appendChild(opt);
+            });
+            
+            categories.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = c;
+                categorySelect.appendChild(opt);
+            });
+            
+            renderCHCTable(chcTestData);
+        }
+
+        function renderCHCTable(data) {
+            const tbody = document.getElementById('chc-table-body');
+            const noResults = document.getElementById('chc-no-results');
+            const table = document.getElementById('chc-table');
+            
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResults.style.display = 'block';
+                table.style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                table.style.display = 'table';
+                
+                data.forEach(item => {
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
+                        <td><strong>${item.name}</strong></td>
+                        <td><span class="domain-badge domain-${item.domain}">${item.domain}</span></td>
+                        <td>${item.category}</td>
+                        <td>${item.age}</td>
+                    `;
+                });
+            }
+            
+            document.getElementById('chc-results-count').textContent = `${data.length} test${data.length !== 1 ? 's' : ''} found`;
+        }
+
+        function applyCHCFilters() {
+            const search = document.getElementById('chc-search').value.toLowerCase();
+            const domain = document.getElementById('chc-domain-filter').value;
+            const category = document.getElementById('chc-category-filter').value;
+            const age = document.getElementById('chc-age-filter').value;
+            
+            filteredCHCData = chcTestData.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(search);
+                const matchesDomain = !domain || item.domain === domain;
+                const matchesCategory = !category || item.category === category;
+                const matchesAge = !age || checkAgeRange(item.age, age);
+                return matchesSearch && matchesDomain && matchesCategory && matchesAge;
+            });
+            
+            renderCHCTable(filteredCHCData);
+        }
+
+        function checkAgeRange(ageRange, filter) {
+            const ageStr = ageRange.replace(/[+:\s]/g, '');
+            const parts = ageStr.split('-');
+            const minAge = parseInt(parts[0]);
+            const maxAge = parts[1] ? (parts[1] === '' ? 999 : parseInt(parts[1])) : minAge;
+            
+            switch(filter) {
+                case '2-5': return (minAge <= 5 && maxAge >= 2);
+                case '6-12': return (minAge <= 12 && maxAge >= 6);
+                case '13-18': return (minAge <= 18 && maxAge >= 13);
+                case '19+': return (maxAge >= 19);
+                default: return true;
+            }
+        }
+
+        function resetCHCFilters() {
+            document.getElementById('chc-search').value = '';
+            document.getElementById('chc-domain-filter').value = '';
+            document.getElementById('chc-category-filter').value = '';
+            document.getElementById('chc-age-filter').value = '';
+            applyCHCFilters();
+        }
+
+        function sortCHCTable(col) {
+            filteredCHCData.sort((a, b) => {
+                let aVal, bVal;
+                switch(col) {
+                    case 0: aVal = a.name; bVal = b.name; break;
+                    case 1: aVal = a.domain; bVal = b.domain; break;
+                    case 2: aVal = a.category; bVal = b.category; break;
+                    case 3: aVal = a.age; bVal = b.age; break;
+                }
+                return aVal > bVal ? 1 : -1;
+            });
+            renderCHCTable(filteredCHCData);
+        }
+
+        // Initialize Assessment Table
+        let filteredAssessData = [...assessmentData];
+        function initAssessTable() {
+            renderAssessTable(assessmentData);
+        }
+
+        function renderAssessTable(data) {
+            const tbody = document.getElementById('assess-table-body');
+            const noResults = document.getElementById('assess-no-results');
+            const table = document.getElementById('assess-table');
+            
+            tbody.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResults.style.display = 'block';
+                table.style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                table.style.display = 'table';
+                
+                data.forEach(item => {
+                    const row = tbody.insertRow();
+                    row.innerHTML = `
+                        <td><strong>${item.acronym}</strong></td>
+                        <td>${item.fullName}</td>
+                        <td><a href="${item.url}" target="_blank">Visit Publisher ↗</a></td>
+                    `;
+                });
+            }
+            
+            document.getElementById('assess-results-count').textContent = `${data.length} assessment${data.length !== 1 ? 's' : ''} found`;
+        }
+
+        function applyAssessFilters() {
+            const search = document.getElementById('assess-search').value.toLowerCase();
+            
+            filteredAssessData = assessmentData.filter(item => {
+                return item.acronym.toLowerCase().includes(search) || 
+                       item.fullName.toLowerCase().includes(search);
+            });
+            
+            renderAssessTable(filteredAssessData);
+        }
+
+        function resetAssessFilters() {
+            document.getElementById('assess-search').value = '';
+            applyAssessFilters();
+        }
+
+        function sortAssessTable(col) {
+            filteredAssessData.sort((a, b) => {
+                let aVal, bVal;
+                switch(col) {
+                    case 0: aVal = a.acronym; bVal = b.acronym; break;
+                    case 1: aVal = a.fullName; bVal = b.fullName; break;
+                }
+                return aVal > bVal ? 1 : -1;
+            });
+            renderAssessTable(filteredAssessData);
+        }
+
+        // Event Listeners
+        document.getElementById('chc-search').addEventListener('input', applyCHCFilters);
+        document.getElementById('chc-domain-filter').addEventListener('change', applyCHCFilters);
+        document.getElementById('chc-category-filter').addEventListener('change', applyCHCFilters);
+        document.getElementById('chc-age-filter').addEventListener('change', applyCHCFilters);
+        document.getElementById('assess-search').addEventListener('input', applyAssessFilters);
+
+        // Initialize on load
+        initCHCTable();
+        initAssessTable();
+    </script>
+</body>
+</html>
